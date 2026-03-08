@@ -1,161 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IADSS - Intelligent Academic Decision Support System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --success-color: #27ae60;
-            --warning-color: #f39c12;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        .hero-section {
-            padding: 100px 0;
-            text-align: center;
-            color: white;
-        }
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-        .btn-get-started {
-            background: white;
-            color: #667eea;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn-get-started:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-        .features-section {
-            padding: 60px 0;
-            background: rgba(255,255,255,0.1);
-        }
-        nav {
-            background: rgba(255,255,255,0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary-color) !important;
-            font-size: 1.5rem;
-        }
-        .nav-link {
-            color: var(--primary-color) !important;
-            font-weight: 500;
-        }
-        .nav-link:hover {
-            color: var(--secondary-color) !important;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Intelligent Academic Decision Support System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f6f7fb;
+color:#1a1a1a;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 70px;
+background:white;
+border-bottom:1px solid #e6e6e6;
+}
+
+.logo{
+display:flex;
+align-items:center;
+font-weight:600;
+font-size:18px;
+color:#1b1f24;
+}
+
+.logo span{
+color:#2d7df6;
+margin-right:8px;
+font-size:20px;
+}
+
+.nav-links{
+display:flex;
+gap:35px;
+align-items:center;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#374151;
+font-size:14px;
+}
+
+.login-btn{
+background:#2d7df6;
+color:white;
+border:none;
+padding:8px 18px;
+border-radius:8px;
+cursor:pointer;
+font-size:14px;
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:80px 20px 100px;
+}
+
+.tag{
+display:inline-block;
+background:#e8f1ff;
+color:#2d7df6;
+padding:6px 14px;
+border-radius:20px;
+font-size:12px;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:50px;
+font-weight:700;
+max-width:900px;
+margin:auto;
+line-height:1.2;
+}
+
+.hero p{
+margin-top:20px;
+color:#6b7280;
+max-width:650px;
+margin-left:auto;
+margin-right:auto;
+font-size:15px;
+}
+
+.hero-buttons{
+margin-top:35px;
+display:flex;
+justify-content:center;
+gap:15px;
+}
+
+.primary-btn{
+background:#2d7df6;
+border:none;
+padding:14px 26px;
+color:white;
+border-radius:10px;
+font-size:14px;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(45,125,246,0.3);
+}
+
+.secondary-btn{
+border:1px solid #d1d5db;
+background:white;
+padding:14px 26px;
+border-radius:10px;
+font-size:14px;
+cursor:pointer;
+}
+
+/* CAPABILITIES */
+
+.section{
+padding:70px 80px;
+text-align:center;
+}
+
+.section h2{
+font-size:26px;
+margin-bottom:10px;
+}
+
+.section p{
+color:#6b7280;
+font-size:14px;
+}
+
+.cards{
+margin-top:40px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.card{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:30px;
+text-align:left;
+}
+
+.card-icon{
+width:40px;
+height:40px;
+background:#e8f1ff;
+border-radius:8px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:15px;
+color:#2d7df6;
+font-size:18px;
+}
+
+.card h3{
+font-size:16px;
+margin-bottom:8px;
+}
+
+.card p{
+font-size:13px;
+color:#6b7280;
+}
+
+/* CTA */
+
+.cta{
+margin:70px;
+background:linear-gradient(135deg,#2d7df6,#1c66d9);
+border-radius:24px;
+padding:70px;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.cta h2{
+font-size:36px;
+margin-bottom:15px;
+}
+
+.cta p{
+max-width:420px;
+font-size:14px;
+opacity:0.9;
+}
+
+.cta button{
+margin-top:25px;
+background:white;
+color:#2d7df6;
+border:none;
+padding:12px 22px;
+border-radius:10px;
+cursor:pointer;
+font-weight:500;
+}
+
+.mock-box{
+width:260px;
+height:180px;
+background:rgba(255,255,255,0.15);
+border-radius:16px;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:60px;
+padding:40px;
+text-align:center;
+color:#6b7280;
+font-size:13px;
+border-top:1px solid #e5e7eb;
+}
+
+.footer-links{
+margin-top:15px;
+display:flex;
+justify-content:center;
+gap:30px;
+font-size:13px;
+}
+
+.footer-links a{
+color:#6b7280;
+text-decoration:none;
+}
+
+</style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-graduation-cap me-2"></i>IADSS
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.html">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="analytics.html">Analytics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="history.html">History</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <div class="hero-section">
-        <div class="container">
-            <h1 class="hero-title">Intelligent Academic Decision Support System</h1>
-            <p class="hero-subtitle">Data-driven decisions for academic excellence</p>
-            <button class="btn-get-started" onclick="location.href='dashboard.html'">
-                <i class="fas fa-rocket me-2"></i>Get Started
-            </button>
-        </div>
-    </div>
+<!-- NAVBAR -->
 
-    <div class="features-section" id="features">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <i class="fas fa-chart-line feature-icon"></i>
-                        <h4>Performance Analytics</h4>
-                        <p>Track and analyze student performance metrics with advanced analytics tools.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <i class="fas fa-exclamation-triangle feature-icon" style="color: var(--accent-color);"></i>
-                        <h4>Risk Detection</h4>
-                        <p>Identify at-risk students early with intelligent prediction algorithms.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <i class="fas fa-history feature-icon" style="color: var(--success-color);"></i>
-                        <h4>Historical Tracking</h4>
-                        <p>Monitor trends and access historical data for informed decision making.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<div class="logo">
+<span>🎓</span>
+Intelligent Academic Decision Support System
+</div>
+
+<div class="nav-links">
+<a href="#">Dashboard</a>
+<a href="#">Reports</a>
+<a href="#">Search History</a>
+<button class="login-btn">Login</button>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="tag">DATA-DRIVEN EXCELLENCE</div>
+
+<h1>
+Intelligent Academic Decision
+Support System
+</h1>
+
+<p>
+Empowering institutional leaders with data-driven insights. Optimize
+academic performance, resource allocation, and strategic planning
+through advanced analytics.
+</p>
+
+<div class="hero-buttons">
+<button class="primary-btn" onclick="goDashboard()">
+Go to Dashboard →
+</button>
+
+<button class="secondary-btn">
+View Documentation
+</button>
+</div>
+
+</section>
+
+
+<!-- SYSTEM CAPABILITIES -->
+
+<section class="section">
+
+<h2>System Capabilities</h2>
+<p>
+Advanced tools designed for institutional excellence and strategic academic management.
+</p>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-icon">📊</div>
+<h3>Data Analytics</h3>
+<p>
+Transform raw data into actionable insights with powerful processing
+and visualization engines.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">📦</div>
+<h3>Resource Planning</h3>
+<p>
+Optimize faculty and facility allocation across departments with
+predictive resource modeling.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">📈</div>
+<h3>Performance Tracking</h3>
+<p>
+Monitor institutional KPIs and student success metrics in real-time
+with customizable dashboards.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+<div>
+<h2>Ready to elevate<br>your academic strategy?</h2>
+
+<p>
+Join hundreds of institutions using IADSS to drive student
+success and operational excellence.
+</p>
+
+<button>Request a Demo</button>
+</div>
+
+<div class="mock-box"></div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<h3>IADSS</h3>
+
+<div class="footer-links">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+<a href="#">Contact Support</a>
+<a href="#">Knowledge Base</a>
+</div>
+
+<p style="margin-top:20px">
+© 2024 Intelligent Academic Decision Support System.
+Designed for Institutional Excellence.
+</p>
+
+</footer>
+
+
+<script>
+
+function goDashboard(){
+window.location.href="dashboard.html";
+}
+
+</script>
+
 </body>
 </html>
-

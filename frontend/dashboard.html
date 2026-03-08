@@ -1,293 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - IADSS</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --success-color: #27ae60;
-            --warning-color: #f39c12;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-        }
-        .sidebar {
-            min-height: 100vh;
-            background: var(--primary-color);
-            color: white;
-            padding: 20px;
-        }
-        .sidebar .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            padding: 10px;
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            padding: 12px 15px;
-            display: block;
-            border-radius: 8px;
-            margin-bottom: 5px;
-            transition: all 0.3s ease;
-        }
-        .sidebar a:hover, .sidebar a.active {
-            background: var(--secondary-color);
-        }
-        .sidebar a i {
-            margin-right: 10px;
-        }
-        .main-content {
-            padding: 30px;
-        }
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .card-header {
-            background: white;
-            border-bottom: 2px solid #f0f0f0;
-            font-weight: 600;
-            padding: 15px 20px;
-        }
-        .kpi-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .kpi-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-        .kpi-label {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        .kpi-change {
-            font-size: 0.85rem;
-        }
-        .kpi-change.negative {
-            color: var(--accent-color);
-        }
-        .kpi-change.positive {
-            color: var(--success-color);
-        }
-        .risk-badge {
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .risk-high {
-            background: #fee;
-            color: var(--accent-color);
-        }
-        .risk-medium {
-            background: #ffeaa7;
-            color: #856404;
-        }
-        .risk-low {
-            background: #d4edda;
-            color: var(--success-color);
-        }
-        .table-responsive {
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .table thead {
-            background: var(--primary-color);
-            color: white;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Academic Dashboard</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#f4f6f9;
+}
+
+.sidebar{
+width:230px;
+height:100vh;
+background:white;
+position:fixed;
+border-right:1px solid #ddd;
+}
+
+.sidebar h2{
+padding:20px;
+font-size:18px;
+}
+
+.menu{
+list-style:none;
+padding:0;
+}
+
+.menu li{
+padding:15px 20px;
+cursor:pointer;
+}
+
+.menu li:hover{
+background:#f1f1f1;
+}
+
+.menu a{
+text-decoration:none;
+color:#333;
+}
+
+.main{
+margin-left:240px;
+padding:30px;
+}
+
+.cards{
+display:flex;
+gap:20px;
+margin-bottom:30px;
+}
+.main-content{
+margin-left:220px;
+padding:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:8px;
+width:200px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.chart{
+background:white;
+padding:20px;
+border-radius:8px;
+margin-bottom:30px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #eee;
+text-align:left;
+}
+
+button{
+background:#2c7be5;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1a5fd0;
+}
+
+</style>
 </head>
+
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 sidebar">
-                <div class="logo">
-                    <i class="fas fa-graduation-cap me-2"></i>IADSS
-                </div>
-                <a href="index.html">
-                    <i class="fas fa-home"></i> Home
-                </a>
-                <a href="dashboard.html" class="active">
-                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-                <a href="analytics.html">
-                    <i class="fas fa-chart-bar"></i> Analytics
-                </a>
-                <a href="history.html">
-                    <i class="fas fa-history"></i> History
-                </a>
-            </div>
-            <div class="col-md-9 main-content">
-                <h2 class="mb-4">Academic Dashboard</h2>
-                
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <div class="kpi-card">
-                            <div class="kpi-label">Average Performance</div>
-                            <div class="kpi-value" id="avg-performance">-</div>
-                            <div class="kpi-change positive">
-                                <i class="fas fa-arrow-up"></i> Overall score
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="kpi-card">
-                            <div class="kpi-label">Attendance Rate</div>
-                            <div class="kpi-value" id="attendance">-</div>
-                            <div class="kpi-change negative" id="attendance-change">
-                                <i class="fas fa-arrow-down"></i> -0.5%
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="kpi-card">
-                            <div class="kpi-label">Students At Risk</div>
-                            <div class="kpi-value" id="at-risk" style="color: var(--accent-color);">-</div>
-                            <div class="kpi-change">
-                                <i class="fas fa-exclamation-triangle"></i> Needs attention
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fas fa-chart-line me-2"></i>Performance Trend
-                            </div>
-                            <div class="card-body">
-                                <canvas id="performanceChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fas fa-users me-2"></i>Student Inquiries
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Department</th>
-                                                <th>Status</th>
-                                                <th>Prediction</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="inquiries-table">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="sidebar">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        async function loadKPI() {
-            try {
-                const response = await fetch('/api/kpi');
-                const data = await response.json();
-                document.getElementById('avg-performance').textContent = data.average_performance + '%';
-                document.getElementById('attendance').textContent = data.attendance + '%';
-                document.getElementById('at-risk').textContent = data.at_risk;
-                document.getElementById('attendance-change').innerHTML = 
-                    `<i class="fas fa-arrow-${data.attendance_change > 0 ? 'up' : 'down'}"></i> ${Math.abs(data.attendance_change)}%`;
-            } catch (error) {
-                console.error('Error loading KPI:', error);
-            }
-        }
+<h2>Institution Admin</h2>
 
-        async function loadPerformanceTrend() {
-            try {
-                const response = await fetch('/api/performance-trend');
-                const data = await response.json();
-                
-                const ctx = document.getElementById('performanceChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: data.months,
-                        datasets: [{
-                            label: 'Performance',
-                            data: data.values,
-                            borderColor: '#3498db',
-                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                            fill: true,
-                            tension: 0.4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 100
-                            }
-                        }
-                    }
-                });
-            } catch (error) {
-                console.error('Error loading performance trend:', error);
-            }
-        }
+<ul class="menu">
 
-        async function loadStudentInquiries() {
-            try {
-                const response = await fetch('/api/student-inquiries');
-                const data = await response.json();
-                const tbody = document.getElementById('inquiries-table');
-                
-                tbody.innerHTML = data.map(student => `
-                    <tr>
-                        <td>${student.id}</td>
-                        <td>${student.department}</td>
-                        <td>
-                            <span class="badge ${student.status === 'At Risk' ? 'bg-danger' : 
-                                student.status === 'Needs Attention' ? 'bg-warning' : 'bg-success'}">
-                                ${student.status}
-                            </span>
-                        </td>
-                        <td>${student.prediction}</td>
-                    </tr>
-                `).join('');
-            } catch (error) {
-                console.error('Error loading student inquiries:', error);
-            }
-        }
+<li><a href="dashboard.html">Dashboard</a></li>
+<li><a href="analytics.html">Analytics</a></li>
+<li><a href="history.html">History</a></li>
 
-        loadKPI();
-        loadPerformanceTrend();
-        loadStudentInquiries();
-    </script>
+</ul>
+
+</div>
+
+
+<div class="main">
+
+<h1>Academic Dashboard</h1>
+
+<div class="cards">
+
+<div class="card">
+<h3>Average Performance</h3>
+<h2>78.4%</h2>
+</div>
+
+<div class="card">
+<h3>Attendance</h3>
+<h2>92%</h2>
+</div>
+
+<div class="card">
+<h3>At Risk Students</h3>
+<h2>14</h2>
+</div>
+
+<div class="card">
+<h3>Course Outcome</h3>
+<h2>85%</h2>
+</div>
+
+</div>
+
+<div class="chart">
+
+<h3>Institutional Performance Trend</h3>
+
+<button onclick="downloadReport()">Generate Report</button>
+
+</div>
+
+<h3>Recent Student Inquiries</h3>
+
+<table id="reportTable">
+
+<thead>
+<tr>
+<th>Student ID</th>
+<th>Department</th>
+<th>Status</th>
+<th>Prediction</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>#ST-8821</td>
+<td>Computer Science</td>
+<td>Stable</td>
+<td>94% Success</td>
+</tr>
+
+<tr>
+<td>#ST-7734</td>
+<td>Mechanical Eng.</td>
+<td>Needs Attention</td>
+<td>62% Success</td>
+</tr>
+
+<tr>
+<td>#ST-9102</td>
+<td>Bio-Chemistry</td>
+<td>At Risk</td>
+<td>45% Success</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+function downloadReport(){
+
+let table=document.getElementById("reportTable");
+let rows=table.querySelectorAll("tr");
+
+let csv=[];
+
+rows.forEach(row=>{
+let cols=row.querySelectorAll("td,th");
+let rowData=[];
+
+cols.forEach(col=>{
+rowData.push(col.innerText);
+});
+
+csv.push(rowData.join(","));
+});
+
+let csvFile=new Blob([csv.join("\n")],{type:"text/csv"});
+
+let link=document.createElement("a");
+link.download="student_report.csv";
+link.href=window.URL.createObjectURL(csvFile);
+link.click();
+
+}
+
+</script>
+
 </body>
 </html>
-
