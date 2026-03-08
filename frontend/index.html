@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intelligent Academic Decision Support System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f7fa;
+color:#111827;
+}
+
+/* ================= HEADER ================= */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 60px;
+background:white;
+box-shadow:0 1px 5px rgba(0,0,0,0.05);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:600;
+font-size:18px;
+color:#1f2937;
+}
+
+nav{
+display:flex;
+align-items:center;
+gap:30px;
+}
+
+nav a{
+text-decoration:none;
+color:#374151;
+font-size:14px;
+}
+
+.login-btn{
+padding:8px 18px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:14px;
+}
+
+.login-btn:hover{
+background:#1d4ed8;
+}
+
+/* ================= HERO ================= */
+.hero{
+text-align:center;
+padding:100px 20px;
+background:#f9fafb;
+}
+
+.badge{
+display:inline-block;
+background:#e0ecff;
+color:#2563eb;
+padding:6px 14px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:52px;
+font-weight:800;
+line-height:1.2;
+margin-bottom:25px;
+}
+
+.hero p{
+max-width:700px;
+margin:auto;
+color:#4b5563;
+font-size:16px;
+line-height:1.6;
+margin-bottom:40px;
+}
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+}
+
+.primary-btn{
+padding:14px 28px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(37,99,235,0.3);
+transition:0.3s;
+}
+
+.primary-btn:hover{
+transform:translateY(-2px);
+}
+
+.secondary-btn{
+padding:14px 28px;
+background:white;
+border:1px solid #d1d5db;
+border-radius:10px;
+font-size:15px;
+cursor:pointer;
+}
+
+/* ================= CAPABILITIES ================= */
+.capabilities{
+padding:80px 60px;
+text-align:center;
+}
+
+.capabilities h2{
+font-size:28px;
+font-weight:700;
+margin-bottom:15px;
+}
+
+.capabilities p{
+color:#6b7280;
+margin-bottom:50px;
+}
+
+.cards{
+display:flex;
+gap:30px;
+justify-content:center;
+}
+
+.card{
+background:white;
+padding:35px;
+border-radius:15px;
+width:320px;
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
+text-align:left;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+color:#6b7280;
+font-size:14px;
+}
+
+/* ================= CTA SECTION ================= */
+.cta{
+margin:80px 60px;
+background:linear-gradient(135deg,#2563eb,#1e40af);
+border-radius:30px;
+padding:70px;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.cta h2{
+font-size:36px;
+margin-bottom:20px;
+}
+
+.cta p{
+margin-bottom:25px;
+color:#dbeafe;
+}
+
+.cta button{
+background:white;
+color:#2563eb;
+border:none;
+padding:14px 28px;
+border-radius:12px;
+font-weight:600;
+cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+footer{
+background:#f3f4f6;
+padding:50px 20px;
+text-align:center;
+margin-top:80px;
+}
+
+.footer-logo{
+font-weight:700;
+color:#2563eb;
+margin-bottom:20px;
+}
+
+.footer-links{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-bottom:20px;
+}
+
+.footer-links a{
+text-decoration:none;
+color:#4b5563;
+font-size:14px;
+}
+
+footer p{
+color:#9ca3af;
+font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">🎓 Intelligent Academic Decision Support System</div>
+
+<nav>
+<a href="#">Dashboard</a>
+<a href="#">Reports</a>
+<a href="#">Search History</a>
+<button class="login-btn">Login</button>
+</nav>
+</header>
+
+<section class="hero">
+<div class="badge">DATA-DRIVEN EXCELLENCE</div>
+
+<h1>Intelligent Academic Decision<br>Support System</h1>
+
+<p>
+Empowering institutional leaders with data-driven insights.
+Optimize academic performance, resource allocation, and strategic planning
+through advanced analytics.
+</p>
+
+<div class="hero-buttons">
+<button class="primary-btn" onclick="goDashboard()">Go to Dashboard →</button>
+<button class="secondary-btn">View Documentation</button>
+</div>
+</section>
+
+<section class="capabilities">
+<h2>System Capabilities</h2>
+<p>Advanced tools designed for institutional excellence and strategic academic management.</p>
+
+<div class="cards">
+<div class="card">
+<h3>Data Analytics</h3>
+<p>Transform raw data into actionable insights with powerful processing and visualization engines.</p>
+</div>
+
+<div class="card">
+<h3>Resource Planning</h3>
+<p>Optimize faculty and facility allocation across departments with predictive resource modeling.</p>
+</div>
+
+<div class="card">
+<h3>Performance Tracking</h3>
+<p>Monitor institutional KPIs and student success metrics in real-time with customizable dashboards.</p>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<div>
+<h2>Ready to elevate your academic strategy?</h2>
+<p>Join hundreds of institutions using IADSS to drive student success and operational excellence.</p>
+<button>Request a Demo</button>
+</div>
+
+<div style="background:rgba(255,255,255,0.1);width:300px;height:220px;border-radius:20px;"></div>
+</section>
+
+<footer>
+<div class="footer-logo">🎓 IADSS</div>
+
+<div class="footer-links">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+<a href="#">Contact Support</a>
+<a href="#">Knowledge Base</a>
+</div>
+
+<p>© 2024 Intelligent Academic Decision Support System. Designed for Institutional Excellence.</p>
+</footer>
+
+<script>
+function goDashboard(){
+window.location.href = "dashboard.html";
+}
+</script>
+
+</body>
+</html>

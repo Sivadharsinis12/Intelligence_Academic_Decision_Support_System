@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student & Subject Analysis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#f4f6f9;color:#111827;}
+
+/* ===== TOP NAV ===== */
+.topnav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:white;
+box-shadow:0 1px 5px rgba(0,0,0,0.05);
+}
+
+.topnav-left{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.topnav-left a{
+text-decoration:none;
+color:#2563eb;
+font-size:14px;
+}
+
+.menu{
+display:flex;
+gap:30px;
+}
+
+.menu a{
+text-decoration:none;
+color:#374151;
+font-weight:500;
+}
+
+.menu a.active{
+color:#2563eb;
+border-bottom:2px solid #2563eb;
+padding-bottom:4px;
+}
+
+.profile{
+width:35px;
+height:35px;
+background:#f3d7b6;
+border-radius:50%;
+}
+
+/* ===== PAGE HEADER ===== */
+.header{
+padding:40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.header h1{
+font-size:36px;
+font-weight:800;
+margin-bottom:5px;
+}
+
+.header p{color:#6b7280;}
+
+.header-buttons button{
+margin-left:10px;
+padding:10px 18px;
+border-radius:8px;
+border:none;
+cursor:pointer;
+}
+
+.export{background:#e5edff;color:#2563eb;}
+.analyze{background:#2563eb;color:white;}
+
+/* ===== FILTERS ===== */
+.filters{
+background:white;
+margin:0 40px 30px 40px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+display:flex;
+gap:20px;
+align-items:center;
+}
+
+.filters select{
+padding:12px;
+border-radius:8px;
+border:1px solid #d1d5db;
+min-width:180px;
+}
+
+.apply{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* ===== CONTENT ===== */
+.content{
+display:flex;
+gap:30px;
+padding:0 40px;
+}
+
+.left{
+flex:2;
+}
+
+.right{
+flex:1;
+}
+
+/* ===== TABLE ===== */
+.table-box{
+background:white;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+overflow:hidden;
+}
+
+.table-box h3{
+padding:20px;
+border-bottom:1px solid #eee;
+}
+
+table{width:100%;border-collapse:collapse;}
+
+th,td{padding:18px 20px;text-align:left;}
+
+th{background:#f9fafb;font-size:13px;color:#6b7280;}
+
+tr:not(:last-child){border-bottom:1px solid #eee;}
+
+.initial{
+width:35px;height:35px;border-radius:50%;
+background:#e0ecff;color:#2563eb;
+display:flex;align-items:center;justify-content:center;
+font-size:13px;font-weight:600;
+}
+
+.progress{
+height:6px;background:#e5e7eb;border-radius:10px;
+position:relative;width:120px;
+}
+
+.progress span{
+height:6px;border-radius:10px;
+position:absolute;left:0;top:0;
+}
+
+.low{background:#16a34a;}
+.medium{background:#f59e0b;}
+.high{background:#dc2626;}
+
+.badge{
+padding:5px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+.badge.low{background:#dcfce7;color:#16a34a;}
+.badge.medium{background:#fef3c7;color:#b45309;}
+.badge.high{background:#fee2e2;color:#dc2626;}
+
+/* ===== RIGHT BOX ===== */
+.sidebox{
+background:white;
+border-radius:15px;
+padding:25px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.sidebox h3{margin-bottom:20px;}
+
+.diff-row{margin-bottom:20px;}
+
+.diff-bar{
+height:8px;background:#e5e7eb;border-radius:10px;
+margin-top:6px;
+}
+
+.diff-bar span{
+display:block;height:8px;border-radius:10px;
+}
+
+/* ===== FOOTER STATUS ===== */
+.statusbar{
+margin-top:40px;
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+background:white;
+font-size:14px;
+}
+
+.online{
+color:#16a34a;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="topnav">
+<div class="topnav-left">
+<a href="dashboard.html">← Back to Dashboard</a>
+<input placeholder="Quick search..." style="padding:8px 12px;border-radius:6px;border:1px solid #ddd;">
+</div>
+
+<div class="menu">
+<a href="dashboard.html">Dashboard</a>
+<a href="analytics.html" class="active">Analytics</a>
+<a href="history.html">History</a>
+<a href="#">Settings</a>
+<div class="profile"></div>
+</div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+<div>
+<h1>Student & Subject Analysis</h1>
+<p>Intelligent decision support for institutional performance insights.</p>
+</div>
+
+<div class="header-buttons">
+<button class="export">Export Data</button>
+<button class="analyze">Analyze</button>
+</div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters">
+<select id="department">
+<option value="">Select Department</option>
+<option value="cs">Computer Science</option>
+<option value="it">Information Technology</option>
+</select>
+
+<select id="specialization">
+<option value="">Select Specialization</option>
+</select>
+
+<select id="semester">
+<option value="">Select Semester</option>
+<option value="4">Semester 4</option>
+<option value="5">Semester 5</option>
+<option value="6">Semester 6</option>
+</select>
+
+<select id="subject">
+<option value="">Select Subject</option>
+</select>
+
+<button onclick="applyFilters()">Apply Filters</button>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<div class="left">
+<div class="table-box">
+<h3>Showing 24 students</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Marks</th>
+<th>Attendance</th>
+<th>Risk Level</th>
+</tr>
+</thead>
+<tbody id="studentsTable"></tbody>
+</table>
+</div>
+</div>
+
+<div class="right">
+<div class="sidebox">
+<h3>Subject Difficulty Levels</h3>
+<div id="difficultyBox"></div>
+<p style="font-size:13px;color:#6b7280;margin-top:15px;">
+Difficulty levels are calculated based on historical pass rates and average assessment scores.
+</p>
+</div>
+</div>
+
+</div>
+
+<!-- STATUS BAR -->
+<div class="statusbar">
+<div class="online">● System status: Online</div>
+<div>© 2024 Academic Support System. Intelligent Insights Engine v2.4</div>
+</div>
+
+<script>
+
+// STUDENTS
+fetch("http://127.0.0.1:8000/api/analytics/students")
+.then(res=>res.json())
+.then(data=>{
+let rows="";
+data.forEach(s=>{
+let cls=s.risk.toLowerCase();
+rows+=`
+<tr>
+<td><div class="initial">${s.initials}</div></td>
+<td>${s.name}</td>
+<td><b>${s.marks}%</b></td>
+<td>
+<div class="progress">
+<span style="width:${s.attendance}%;background:#2563eb;"></span>
+</div> ${s.attendance}%
+</td>
+<td><span class="badge ${cls}">${s.risk}</span></td>
+</tr>
+`;
+});
+document.getElementById("studentsTable").innerHTML=rows;
+});
+
+// DIFFICULTY
+fetch("http://127.0.0.1:8000/api/analytics/difficulty")
+.then(res=>res.json())
+.then(data=>{
+let html="";
+data.forEach(d=>{
+let color=d.value>70?"#dc2626":d.value>50?"#f59e0b":"#2563eb";
+html+=`
+<div class="diff-row">
+${d.subject} <b style="float:right">${d.value}%</b>
+<div class="diff-bar">
+<span style="width:${d.value}%;background:${color};"></span>
+</div>
+</div>
+`;
+});
+document.getElementById("difficultyBox").innerHTML=html;
+});
+
+</script><script>
+const specializations = {
+cs: ["Artificial Intelligence", "Data Science", "Cyber Security"],
+it: ["Cloud Computing", "Networking", "Web Technology"]
+};
+
+const subjects = {
+4: ["Database", "Operating Systems"],
+5: ["Machine Learning", "Compiler Design"],
+6: ["Deep Learning", "Distributed Systems"]
+};
+
+document.getElementById("department").addEventListener("change", function(){
+const spec = document.getElementById("specialization");
+spec.innerHTML = "<option>Select Specialization</option>";
+
+specializations[this.value]?.forEach(item=>{
+let option=document.createElement("option");
+option.text=item;
+spec.add(option);
+});
+});
+
+document.getElementById("semester").addEventListener("change", function(){
+const sub = document.getElementById("subject");
+sub.innerHTML = "<option>Select Subject</option>";
+
+subjects[this.value]?.forEach(item=>{
+let option=document.createElement("option");
+option.text=item;
+sub.add(option);
+});
+});
+
+function applyFilters(){
+let department = document.getElementById("department").value;
+let specialization = document.getElementById("specialization").value;
+let semester = document.getElementById("semester").value;
+let subject = document.getElementById("subject").value;
+
+let data = {
+department,
+specialization,
+semester,
+subject,
+date: new Date().toLocaleString()
+};
+
+// Save in localStorage (frontend history)
+let history = JSON.parse(localStorage.getItem("history")) || [];
+history.push(data);
+localStorage.setItem("history", JSON.stringify(history));
+
+// Send to backend
+fetch("http://127.0.0.1:8000/history/", {
+method: "POST",
+headers: {"Content-Type": "application/json"},
+body: JSON.stringify({
+criteria: `${department} - ${specialization} - Sem ${semester} - ${subject}`,
+report_type: "Filter Search"
+})
+});
+
+alert("Filters Applied & Saved!");
+}
+</script>
+
+</body>
+</html>
